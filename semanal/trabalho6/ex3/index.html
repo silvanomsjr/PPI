@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercício 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="field-content">
+      <label for="altura">Altura (centimetros): </label>
+      <input type="text" name="Altura" id="altura">
+    </div>
+    <div class="field-content">
+      <label for="sexo">Sexo: </label>
+      <select name="sexo" id="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+      </select>
+    </div>
+    <button type="submit">Enviar</button>
+  </div>
+
+  <div class="result-container">
+    <p></p>
+  </div>
+
+  <script>
+    const botao = document.querySelector("button");
+    const resultado = document.querySelector(".result-container p");
+    const alturaText = document.querySelector("#altura");
+    const sexoSelect = document.querySelector("#sexo");
+
+    botao.onclick = function () {
+      if (!alturaText.value) {
+        resultado.textContent = "Insira uma altura.";
+      } else {
+        const altura = parseInt(alturaText.value);
+        const sexo = sexoSelect.value
+
+        if (sexo == "masculino") {
+          resultado.textContent = `O calculo para seu peso ideal é: ${52 + (0.75 * (altura - 152.4))}`;
+        } else {
+          resultado.textContent = `O calculo para seu peso ideal é: ${52 + (0.67 * (altura - 152.4))}`;
+        }
+
+      }
+    };
+  </script>
+
+</body>
+
+</html>

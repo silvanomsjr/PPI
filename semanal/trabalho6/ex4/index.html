@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercício 4</title>
+  </head>
+  <body>
+    <h1>Tipos de nós na DOM Tree</h1>
+    <input type="text" id="myInput">
+    <!-- comentário -->
+    <pre id="output"></pre>
+
+    <script>
+      const output = document.querySelector("#output");
+      for (let node of document.body.childNodes)
+        output.textContent += node.constructor.prototype + '\n';
+
+      const input = document.querySelector("#myInput");
+      output.textContent += (input instanceof HTMLInputElement) + '\n';
+      output.textContent += (input instanceof HTMLElement) + '\n';
+      output.textContent += (input instanceof Element) + '\n';
+      output.textContent += (input instanceof Node) + '\n';
+      output.textContent += (input instanceof EventTarget) + '\n';
+
+      console.log("instance HTMLInputElement: ", input instanceof HTMLInputElement)
+      console.log("instance HTMLElement: ", input instanceof HTMLInputElement)
+      console.log("instance Element: ", input instanceof Element)
+      console.log("instance Node: ", input instanceof Node)
+      console.log("instance EventTarget: ", input instanceof EventTarget)
+
+      output.textContent += document.constructor.prototype + '\n';
+
+    </script>
+
+    <h1>Explicação</h1>
+    <span>O [object Interface] acontece quando tentamos inserir um objeto da DOM ou do JavaScript dentro do HTML, o HTML não consegue "formatar" esse objeto, então ele mostra apenas [object &lt; Tipo do Objeto &gt;], tanto que obtemos apenas valores booleanos com "input instanceof" e [object &lt; Tipo do Objeto &gt;] para os objetos da DOM.</span>
+  
+  </body>
+</html>
