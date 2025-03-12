@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página principal da Clínica ABC Health">
+    <link rel="stylesheet" href="stylesIndex.css">
+    <title>Clinica ABC Health</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Clínica ABC Health</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <button class="btnActive">Home</button>
+        </li>
+        <li>
+          <button>Galeria</button>
+        </li>
+        <li>
+          <button>Login</button>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div class="tabs">
+        <div class="tab-content active">
+          <section>
+            <h2>Bem vindo à Clínica ABC Health</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem
+              debitis porro saepe quisquam dolores incidunt nobis exercitationem
+              possimus, consequatur magni laboriosam repudiandae ratione reiciendis
+              est reprehenderit rem sint commodi! Quidem.
+            </p>
+            <p>
+              Sed suscipit ut nisl ac dignissim. Nullam fringilla sollicitudin
+              scelerisque. Vivamus condimentum, purus malesuada sollicitudin rutrum,
+              sapien elit luctus nulla, ac convallis arcu enim in nulla. Morbi
+              auctor ligula ipsum, euismod fermentum orci auctor hendrerit. Interdum
+              et malesuada fames ac ante ipsum primis in faucibus. In posuere
+              tincidunt ex, sit amet tempor nisl consectetur ut.
+            </p>
+          </section>
+          <section>
+            <h2>Nossa Missão</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec
+              neque ac risus accumsan lobortis quis eget ex. Duis tempus neque in
+              magna accumsan, sit amet varius sem congue. Donec consequat justo ac
+              ligula congue, vel congue purus mollis. Nulla rutrum eget enim quis
+              fringilla.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non
+              dui eu turpis congue semper nec in felis. Nulla facilisi. Suspendisse
+              ac dolor erat. Nullam at consectetur ligula. Suspendisse lacinia
+              euismod nisl et venenatis. Proin lorem massa, feugiat id gravida in,
+              luctus sit amet diam.
+            </p>
+          </section>
+          <section>
+            <h2>Nossos Valores</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue
+              ante a dolor porttitor dictum. Duis mattis mauris id maximus mattis.
+              Ut vitae magna sapien.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec
+              neque ac risus accumsan lobortis quis eget ex. Duis tempus neque in
+              magna accumsan, sit amet varius sem congue. Donec consequat justo ac
+              ligula congue, vel congue purus mollis. Nulla rutrum eget enim quis
+              fringilla.
+            </p>
+          </section>
+        </div>
+        <div class="tab-content">
+          <h2>Nossa Estrutura</h2>
+          <table>
+            <tr>
+              <td>
+                <img src="images/estrutura-1.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-2.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-3.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-4.jpg" alt="">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/estrutura-5.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-6.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-7.jpg" alt="">
+              </td>
+              <td>
+                <img src="images/estrutura-8.jpg" alt="">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="tab-content">
+          <div class="loginContainer">
+            <form action="login.php" method="post">
+              <div>
+                <label for="usuario" style="display: block;">Usuário:</label>
+                <input id="usuario" type="text" name="usuario" required>
+              </div>
+              <div>
+                <label for="senha" style="display: block;">Senha:</label>
+                <input id="senha" type="password" name="senha" required>
+              </div>
+              <div>
+                <button type="submit">
+                  Entrar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <address>Av. João Naves de Ávila, Santa Mônica, Uberlândia</address>
+    </footer>
+    <script>
+     const container = document.querySelector("main"); 
+     const botoes = document.querySelectorAll("ul button");
+     const tabsContent = document.querySelectorAll(".tab-content");
+
+     for(let i = 0; i < botoes.length; i++) {
+       botoes[i].addEventListener("click", () => movePagina(i));
+     }
+
+     function movePagina(index) {
+       const pegaAtivo = document.querySelector(".tab-content.active");
+       const botaoAtivo = document.querySelector("button.btnActive");
+       if (pegaAtivo) {
+         botaoAtivo.classList.remove("btnActive");
+         pegaAtivo.classList.remove("active");
+       }
+       tabsContent[index].classList.add("active");
+       botoes[index].classList.add("btnActive");
+     }
+
+
+    </script>
+  </body>
+</html>
