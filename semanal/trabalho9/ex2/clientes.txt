@@ -1,0 +1,3 @@
+Silvano Martins da Silva Junior;12872511610;silvanoteste@gmail.com;12345;38408399;Rua João Pereira da Silva;Santa Mônica;Uberlândia;minasgerais
+Testando Outro;838283823;teste@gmail.com;1234;38408-248;Rua Jornalista João de Oliveira 1022;Santa Monica;Uberlândia;minasgerais
+Maria Clara Fernandes Martins;128.725.116-10;mariaclaramc0071@gmail.com;1234;38408-248;Rua Jornalista João de Oliveira 1022;Santa Monica;Uberlândia;pernambuco
