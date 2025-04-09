@@ -1,0 +1,23 @@
+i. Qual foi o código de status retornado?
+  O código do status retornado foi "200"
+
+ii. Qual o valor do cabeçalho Content-Type da resposta HTTP? Por quê?
+  O valor do cabeçalho "Content-Type" é "text/html; charset=UTF-8", pois é
+  retornado apenas uma string do código PHP, o comando "echo" retorna apenas
+  texto para o servidor.
+
+iii. Qual o valor recebido no corpo da resposta HTTP (aba Response)?
+  O valor recebido é "Uberlândia"
+
+iv. Qual o valor do cabeçalho Server da resposta HTTP?
+  O valor é "openresty"
+
+v. A requisição HTTP possui o cabeçalho Content-Type? Por quê?
+  Na verdade a requisição não possui o cabeçalho Content-Type, 
+  apenas a response possui esse cabeçalho, isso se deve pelo método utilizado na requisição,
+  como foi utilizado o metodo "GET", esse cabeçalho não é necessário,
+  já que ele é mais utilizado em requisições com "corpo", onde enviam dados, 
+  mas não é necessário em requisições "GET" que apenas solicitam dados do servidor.
+
+  
+
