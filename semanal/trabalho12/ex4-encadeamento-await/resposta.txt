@@ -1,0 +1,37 @@
+Qual o valor das propriedades latitude e longitude da variável local?
+
+latitude: -19.0233
+longitude: -48.3348
+
+
+Corpo da última requisição HTTP na aba response:
+
+"
+{
+  "latitude": -19.0,
+    "longitude": -48.375,
+    "generationtime_ms": 0.028252601623535156,
+    "utc_offset_seconds": 0,
+    "timezone": "GMT",
+    "timezone_abbreviation": "GMT",
+    "elevation": 838.0,
+    "current_weather_units": {
+      "time": "iso8601",
+      "interval": "seconds",
+      "temperature": "°C",
+      "windspeed": "km/h",
+      "winddirection": "°",
+      "is_day": "",
+      "weathercode": "wmo code"
+    },
+    "current_weather": {
+      "time": "2025-04-16T20:30",
+      "interval": 900,
+      "temperature": 24.1,
+      "windspeed": 4.3,
+      "winddirection": 270,
+      "is_day": 1,
+      "weathercode": 95
+    }
+}
+"
