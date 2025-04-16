@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Desenvolvimento Web com Ajax</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+  <style>
+    body {
+      padding-top: 2rem;
+    }
+
+    h3 {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h3>Preenchendo o endereço com Ajax</h3>
+
+    <form class="row g-3">
+      <div>
+        <label for="cep" class="form-label">Informe o CEP no formato xxxxx-xxx (Ex. 38400-100)</label>
+        <input type="text" class="form-control" id="cep" name="cep">
+      </div>
+      <div>
+        <label for="rua" class="form-label">Rua:</label>
+        <input type="text" class="form-control" id="rua" name="rua">
+      </div>
+      <div>
+        <label for="bairro" class="form-label">Bairro:</label>
+        <input type="text" class="form-control" id="bairro" name="bairro">
+      </div>
+      <div>
+        <label for="cidade" class="form-label">Cidade:</label>
+        <input type="text" class="form-control" id="cidade" name="cidade">
+      </div>
+    </form>
+
+  </div>
+
+  <script>
+
+    // EXERCÍCIO 3)
+    // RESPOSTA B)
+    // O valor da propriedade "response.status" é 200, já a propriedade body, não é possível observar se
+    // possui valores do endereço ou não
+    // já que atualmente o valor é um "ReadableStream", isso acontece pois "body" ainda não foi lido,
+    // e é salvo como ReadableStream para que o valor seja lido posteriormente,
+    // tanto que, após, "response.json()" o valor de "endereco" é sim preenchido por valores do endereço
+
+
+    // Função assíncrona que busca dados de endereço a partir de um CEP informado
+    async function buscaEndereco(cep) {
+
+      // Verifica se o CEP tem exatamente 9 caracteres
+      if (cep.length != 9) return;
+
+      try {
+        // Faz uma requisição GET para o script PHP passando o CEP como parâmetro na URL
+        const response = await fetch("busca-endereco-bd.php?cep=" + cep);
+        // Verifica se a resposta não foi bem-sucedida (status diferente de 200 OK)
+        if (!response.ok) {
+          // Se não for ok, lê o corpo da resposta como texto para obter a mensagem de erro (se houver)
+          errorMessage = await response.text();
+          // Lança um erro com o statusText e a mensagem de erro vinda do servidor
+          throw new Error(response.statusText + errorMessage);
+        }
+
+        // Se a resposta for válida, converte o conteúdo da resposta de JSON para objeto JavaScript
+        const endereco = await response.json();
+
+        // Seleciona o <form> da página e preenche os dados obtidos pela resposta convertida em JSON
+        const form = document.querySelector("form");
+        form.rua.value = endereco.logradouro;
+        form.bairro.value = endereco.bairro;
+        form.cidade.value = endereco.cidade;
+      }
+      catch (e) {
+        // Se ocorrer qualquer erro (na requisição ou no preenchimento), exibe no console
+        console.error(e);
+        return;
+      }
+    }
+
+    window.onload = function () {
+      const inputCep = document.querySelector("#cep");
+      inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+    }
+
+  </script>
+
+</body>
+
+</html>
