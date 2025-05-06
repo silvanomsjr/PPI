@@ -5,6 +5,7 @@ const formulario = document.forms.login;
 formulario.addEventListener("submit", checkarErros);
 
 function checkarErros(e) {
+  e.preventDefault();
   const senhaError = senhaInput.nextElementSibling;
   const emailError = emailInput.nextElementSibling;
 
@@ -24,7 +25,17 @@ function checkarErros(e) {
     emailError.style.visibility = "hidden";
   }
 
-  if (!valido) {
-    e.preventDefault();
+  if (valido) {
+    realizaLogin();
   }
+}
+
+async function realizaLogin() {
+  const url = "http://localhost:8000/controller.php?acao=login";
+  const resultado = await fetch(url, {
+    method: "POST",
+    body: new FormData(formulario)
+  }); 
+  const json = await resultado.json();
+  console.log("json: ", json);
 }
