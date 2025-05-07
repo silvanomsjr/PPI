@@ -74,7 +74,6 @@ function criaCardAnuncio(anuncio) {
 }
 
 async function excluirAnuncio(anuncio) {
-  console.log("quer apagar esse daqui: ", anuncio);
   const url = "controller.php?acao=deletaAnuncio&idAnuncio=" + anuncio.Id;
   const response = await fetch(url);
   console.log("response: ", response)

@@ -97,6 +97,11 @@ switch ($acao) {
     }
     break;
   case "cadastraAnuncio":
+    if(!isset($_SESSION['loggedIn'])) {
+      http_response_code(400);
+      echo "Deslogado";
+      return;
+    } 
     try {
         $marca = $_POST['marca'] ?? '';
         $modelo = $_POST['modelo'] ?? '';

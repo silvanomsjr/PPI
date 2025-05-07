@@ -72,9 +72,6 @@ function checkarErros(e) {
   } else {
     kmError.style.visibility = "hidden";
   }
-  // const foto1Error = foto1Input.nextElementSibling;
-  // const foto2Error = foto2Input.nextElementSibling;
-  // const foto3Error = foto3Input.nextElementSibling;
 
   if (!descricaoInput.value) {
     descricaoError.style.visibility = "visible";
