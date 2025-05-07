@@ -21,7 +21,7 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a href="index-logado.html" class="navbar-brand text-white logo">
+          <a href="home.html" class="navbar-brand text-white logo">
             <i class="bi bi-car-front-fill logo-icon"></i>
             <span>AutoFinder</span>
           </a>
@@ -64,34 +64,34 @@
             <ul class="list-unstyled">
               <li class="card-text">
                 <strong>Marca:</strong>
-                <span class="marca-veiculo">Toyota</span>
+                <span class="marca-veiculo"></span>
               </li>
               <li class="card-text">
                 <strong>Modelo:</strong>
-                <span class="modelo-veiculo">Corolla XEi</span>
+                <span class="modelo-veiculo"></span>
               </li>
               <li class="card-text">
-                <strong>Ano:</strong> <span class="ano-veiculo">2020</span>
+                <strong>Ano:</strong> <span class="ano-veiculo"></span>
               </li>
               <li class="card-text">
                 <strong>Cidade:</strong>
-                <span class="cidade-veiculo">São Paulo - SP</span>
+                <span class="cidade-veiculo"></span>
               </li>
               <li class="card-text">
                 <strong>Cor:</strong>
-                <span class="cor-veiculo">Vermelho</span>
+                <span class="cor-veiculo"></span>
               </li>
               <li class="card-text">
                 <strong>Quilometragem:</strong>
-                <span class="km-veiculo">50.000 Km</span>
+                <span class="km-veiculo"></span>
               </li>
               <li class="card-text">
                 <strong>Descrição:</strong>
-                <span class="descricao-veiculo">Veiculo usado para UBER</span>
+                <span class="descricao-veiculo"></span>
               </li>
               <li class="card-text text-success">
                 <strong>Valor:</strong>
-                <span class="valor-veiculo">R$ 98.000,00</span>
+                <span class="valor-veiculo"></span>
               </li>
             </ul>
           </div>
@@ -132,6 +132,40 @@
             </button>
             <button type="button" class="btn btn-danger confirm-logout">
               Sair
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-danger">
+          <div class="modal-header bg-danger text-white">
+            <h1 class="modal-title fs-5" id="errorModalLabel">Erro</h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" id="errorModalMessage">
+            Ocorreu um erro inesperado.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
             </button>
           </div>
         </div>

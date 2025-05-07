@@ -9,6 +9,8 @@ const formulario = document.forms.cadastro;
 formulario.addEventListener("submit", checkarErros);
 
 function checkarErros(e) {
+  e.preventDefault();
+
   const nomeError = nomeInput.nextElementSibling;
   const cpfError = cpfInput.nextElementSibling;
   const emailError = emailInput.nextElementSibling;
@@ -52,7 +54,28 @@ function checkarErros(e) {
     telefoneError.style.visibility = "hidden";
   }
 
-  if (!valido) {
-    e.preventDefault();
+  if (valido) {
+    cadastraAnunciante();
   }
 }
+
+async function cadastraAnunciante() {
+  const cadastroError = document.querySelector(".cadastro-error");
+
+  const url = "../controller.php?acao=criarAnunciante";
+  const response = await fetch(url, {
+    method: "POST",
+    body: new FormData(formulario),
+  });
+  console.log("resultado: ", response);
+  if (!response.ok) {
+    cadastroError.style.visibility = "visible";
+    return;
+  }
+
+  cadastroError.style.visibility = "hidden";
+
+  window.location.href = "login.html"
+
+}
+

@@ -27,7 +27,7 @@ class Anunciante
      * @param mixed $pdo
      * @param int $id
      */
-    public static function Get($pdo, $id): object {
+    public static function Get($pdo, $id): ?object {
         $stmt = $pdo->prepare(
             <<<SQL
             SELECT id, nome, cpf, email, senhaHash, telefone
@@ -39,7 +39,7 @@ class Anunciante
         $stmt->execute([$id]);
 
         if ($stmt->rowCount() == 0)
-            throw new Exception("Anunciante não localizado");
+            return false;
 
         $anunciante = $stmt->fetch(PDO::FETCH_OBJ);
         return $anunciante;
@@ -49,7 +49,7 @@ class Anunciante
      * @param mixed $pdo
      * @param string $email
      */
-    public static function GetByEmail($pdo, $email): object {
+    public static function GetByEmail($pdo, $email): ?object {
         $stmt = $pdo->prepare(
             <<<SQL
             SELECT id, nome, cpf, email, senhaHash, telefone
@@ -60,11 +60,11 @@ class Anunciante
 
         $stmt->execute([$email]);
 
-        if ($stmt->rowCount() == 0)
-            throw new Exception("Anunciante não localizado");
+        if ($stmt->rowCount() > 0){
+          return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+        return null;
 
-        $anunciante = $stmt->fetch(PDO::FETCH_OBJ);
-        return $anunciante;
     }
 
     /**

@@ -23,6 +23,7 @@ const cidadesPorEstado = {
 formulario.addEventListener("submit", checkarErros);
 
 function checkarErros(e) {
+  e.preventDefault();
   const marcaError = marcaInput.nextElementSibling;
   const modeloError = modeloInput.nextElementSibling;
   const anoError = anoInput.nextElementSibling;
@@ -130,9 +131,54 @@ function checkarErros(e) {
     fotoError.style.visibility = "hidden";
   }
 
-  if (!valido) {
-    e.preventDefault();
+  if (valido) {
+    criaAnuncio();
   }
+}
+
+async function criaAnuncio() {
+  const formData = new FormData(formulario);
+  formData.append("foto1", foto1Input.files[0].name);
+  formData.append("foto2", foto2Input.files[0].name);
+  formData.append("foto3", foto3Input.files[0].name);
+
+  const url = "../controller.php?acao=cadastraAnuncio";
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      exibirModalErro(errorText);
+      return;
+    } else {
+      exibirModalSucesso("Anúncio criado com sucesso.");
+    }
+  } catch (error) {
+    exibirModalErro("Erro na requisição: " + error.message);
+  }
+}
+
+function exibirModalErro(mensagem) {
+  const msgElement = document.getElementById("errorModalMessage");
+  msgElement.textContent = mensagem;
+
+  const modal = new bootstrap.Modal(document.getElementById("errorModal"));
+  modal.show();
+}
+
+function exibirModalSucesso(mensagem) {
+  const msgElement = document.getElementById("successModalMessage");
+  msgElement.textContent = mensagem;
+
+  const modal = new bootstrap.Modal(document.getElementById("successModal"));
+  modal.show();
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 2000);
+
 }
 
 function atualizarCidades() {
@@ -149,3 +195,4 @@ function atualizarCidades() {
     });
   }
 }
+

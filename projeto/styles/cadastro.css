@@ -20,6 +20,10 @@ body {
   visibility: hidden;
 }
 
+.cadastro-error {
+  margin-left: 20px;
+}
+
 .container-fluid a {
   color: white;
   text-decoration: none;

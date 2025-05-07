@@ -21,7 +21,7 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a href="index-logado.html" class="navbar-brand text-white logo">
+          <a href="home.html" class="navbar-brand text-white logo">
             <i class="bi bi-car-front-fill logo-icon"></i>
             <span>AutoFinder</span>
           </a>
@@ -63,6 +63,7 @@
               type="text"
               class="form-control"
               id="marca"
+              name="marca"
               autocomplete="off"
             />
             <span class="text-danger error fw-medium"
@@ -76,6 +77,7 @@
               type="text"
               class="form-control"
               id="modelo"
+              name="modelo"
               autocomplete="off"
             />
             <span class="text-danger error fw-medium"
@@ -88,6 +90,7 @@
               type="text"
               class="form-control"
               id="ano"
+              name="ano"
               autocomplete="off"
             />
             <span class="text-danger error fw-medium"
@@ -97,9 +100,10 @@
           <div class="mb-3">
             <label for="cor" class="form-label"> Cor </label>
             <input
-              type="password"
+              type="text"
               class="form-control"
               id="cor"
+              name="cor"
               autocomplete="current-password"
             />
             <span class="text-danger error fw-medium"
@@ -109,9 +113,10 @@
           <div class="mb-3">
             <label for="km" class="form-label"> Quilometragem </label>
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="km"
+              name="km"
               autocomplete="off"
             />
             <span class="text-danger error fw-medium"
@@ -123,6 +128,7 @@
             <textarea
               class="form-control"
               id="descricao"
+              name="descricao"
               rows="8"
               autocomplete="off"
             ></textarea>
@@ -133,9 +139,10 @@
           <div class="mb-3">
             <label for="valor" class="form-label"> Valor </label>
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="valor"
+              name="valor"
               autocomplete="off"
             />
             <span class="text-danger error fw-medium"
@@ -147,6 +154,7 @@
             <select
               class="form-select"
               id="estado"
+              name="estado"
               onchange="atualizarCidades()"
             >
               <option value="" selected disabled>Selecione um estado</option>
@@ -184,7 +192,7 @@
           </div>
           <div class="mb-3">
             <label for="cidade" class="form-label"> Cidade </label>
-            <select class="form-select" id="cidade">
+            <select class="form-select" id="cidade" name="cidade">
               <option value="" selected disabled>
                 Selecione um estado primeiro
               </option>
@@ -250,6 +258,74 @@
             </button>
             <button type="button" class="btn btn-danger confirm-logout">
               Sair
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-danger">
+          <div class="modal-header bg-danger text-white">
+            <h1 class="modal-title fs-5" id="errorModalLabel">Erro</h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" id="errorModalMessage">
+            Ocorreu um erro inesperado.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-success">
+          <div class="modal-header bg-success text-white">
+            <h1 class="modal-title fs-5" id="successModalLabel">Sucesso</h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" id="successModalMessage">
+            Operação realizada com sucesso.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              OK
             </button>
           </div>
         </div>

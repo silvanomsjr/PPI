@@ -2,7 +2,15 @@ const botaoLogout = document.querySelector(".confirm-logout");
 
 botaoLogout.addEventListener("click", fazerLogout)
 
-function fazerLogout() {
-  const urlAtual = window.location.origin;
-  window.location.href = urlAtual + "/index.html"; 
+async function fazerLogout() {
+  const response = await fetch("/controller.php?acao=logout", {
+    credentials: "include",
+  });
+
+  if (response.status === 200) {
+    window.location.href = "/";
+  }
+
+  return null;
+
 }

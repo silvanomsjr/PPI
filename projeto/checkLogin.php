@@ -1,14 +1,15 @@
 <?php
+session_start();
 
-function exitWhenNotLoggedIn()
-{ 
-  // Verifica se a variável de sessão 'loggedIn' NÃO está definida 
-  if (!isset($_SESSION['loggedIn'])) {
-    // Caso não esteja definida, 
-    // iremos redirecionar o usuário para a página de login 'index.html'
-    header("Location: index.html");
-    // Após enviar o cabeçalho de redirecionamento, termina a execução do código
+function authenticateUser() { 
+  if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header("Content-Type: application/json");
+    http_response_code(401);
+    echo json_encode(['logado' => false, 'erro' => 'Sessão expirada ou usuário não autenticado']);
     exit();  
+  } else {
+    echo json_encode(['logado' => true]);
+    return;
   }
 }
 

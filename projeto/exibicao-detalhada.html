@@ -21,7 +21,7 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a href="index-logado.html" class="navbar-brand text-white logo">
+          <a href="home.html" class="navbar-brand text-white logo">
             <i class="bi bi-car-front-fill logo-icon"></i>
             <span>AutoFinder</span>
           </a>
@@ -200,6 +200,40 @@
             </button>
             <button type="button" class="btn btn-danger confirm-logout">
               Sair
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-danger">
+          <div class="modal-header bg-danger text-white">
+            <h1 class="modal-title fs-5" id="errorModalLabel">Erro</h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" id="errorModalMessage">
+            Ocorreu um erro inesperado.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
             </button>
           </div>
         </div>

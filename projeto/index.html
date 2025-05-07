@@ -1,11 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Página Restrita</title>
-  </head>
-  <body>
-    <h1>NADA PRA VC OLHAR AQUI CURIOSO</h1>
-  </body>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoFinder</title>
+  <link href="styles/index.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand text-white logo">
+          <i class="bi bi-car-front-fill logo-icon"></i>
+          <span>AutoFinder</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="home.html">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container py-4">
+    <section class="search-panel">
+      <div class="container">
+        <h2 class="text-center">Encontre o veículo dos seus sonhos</h2>
+        <div class="search-card">
+          <form name="filtro">
+            <div class="row g-3">
+              <div class="col-lg-3 col-md-6">
+                <label for="marca" class="form-label">Marca</label>
+                <select id="marca" name="marca" class="form-select select-style">
+                  <option value="all" selected>Todas as marcas</option>
+                </select>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <label for="modelo" class="form-label">Modelo</label>
+                <select id="modelo" name="modelo" class="form-select select-style">
+                  <option value="all" selected>Todos os modelos</option>
+                  <option value="suv">SUV</option>
+                  <option value="touring">Civic Touring</option>
+                  <option value="limited">Ranger Limited</option>
+                  <option value="xei">Corolla XEi</option>
+                  <option value="convertible">Conversível</option>
+                </select>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <label for="cidade" class="form-label">Localização</label>
+                <select id="cidade" name="cidade" class="form-select select-style">
+                  <option value="all" selected>Todas as cidades</option>
+                  <option value="são-paulo">São Paulo, SP</option>
+                  <option value="rio-de-janeiro">Rio de Janeiro, RJ</option>
+                  <option value="belo-horizonte">Belo Horizonte, MG</option>
+                  <option value="brasília">Brasília, DF</option>
+                  <option value="curitiba">Curitiba, PR</option>
+                  <option value="salvador">Salvador, BA</option>
+                </select>
+              </div>
+              <div class="col-lg-3 col-md-6 d-flex align-items-end">
+                <button type="submit" id="search-btn" class="btn btn-primary text-white w-100">
+                  Buscar&nbsp;
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="row cards-container"></div>
+  </div>
+
+  <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-danger">
+        <div class="modal-header bg-danger text-white">
+          <h1 class="modal-title fs-5" id="errorModalLabel">Erro</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body" id="errorModalMessage">
+          Ocorreu um erro inesperado.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
 </html>

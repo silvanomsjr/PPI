@@ -4,6 +4,19 @@ const formulario = document.forms.login;
 
 formulario.addEventListener("submit", checkarErros);
 
+
+window.addEventListener("DOMContentLoaded", async () => {
+  const response = await fetch("/controller.php?acao=autenticaUsuario", {
+    credentials: "include",
+  });
+
+  if (response.status === 200) {
+    window.location.href = "/";
+  }
+
+  return null;
+});
+
 function checkarErros(e) {
   e.preventDefault();
   const senhaError = senhaInput.nextElementSibling;
@@ -31,11 +44,21 @@ function checkarErros(e) {
 }
 
 async function realizaLogin() {
-  const url = "http://localhost:8000/controller.php?acao=login";
-  const resultado = await fetch(url, {
+  const loginError = document.querySelector(".login-error");
+
+  const url = "../controller.php?acao=login";
+  const response = await fetch(url, {
     method: "POST",
-    body: new FormData(formulario)
-  }); 
-  const json = await resultado.json();
-  console.log("json: ", json);
+    body: new FormData(formulario),
+  });
+  console.log("resultado: ", response);
+  if (!response.ok) {
+    loginError.style.visibility = "visible";
+    return;
+  }
+
+  loginError.style.visibility = "hidden";
+
+  window.location.href = "home.html"
+
 }
